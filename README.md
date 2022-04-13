@@ -14,7 +14,6 @@ Here you will find all of the notes & resources for training.
 4. You are all set!
 
 ## So what's next?
-* You will find all group activities [here](./group-activities/README.md).
 * You will find all project guidelines [here](./project-guidelines/README.md).
 * You will find all Hackerrank assignments [here](./hackerrank-assignments/README.md).
 * You will find all lecture slides here (will be a SharePoint folder) and notes [here](./lecture-notes/README.md).
