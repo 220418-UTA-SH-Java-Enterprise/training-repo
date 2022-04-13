@@ -14,10 +14,11 @@ Here you will find all of the notes & resources for training.
 4. You are all set!
 
 ## So what's next?
-* You will find all project guidelines [here](./project-guidelines/README.md).
-* You will find all Hackerrank assignments [here](./hackerrank-assignments/README.md).
-* You will find all lecture slides here (will be a SharePoint folder) and notes [here](./lecture-notes/README.md).
-* You can find the "How to Do Well In QC" document [here](./study-materials/HowToDoWellInQC.pdf). This will be useful while you study for QCs and quizzes throughout training.
+* You will find all visual boards [here](https://miro.com/welcome/SG5BTnluYjFXVlBZeVRZVUxXaTc5anJxTkZWaE5adDVYS05kNTQ4a0ZTbU1jNjF3SVJaUGtwRXV1dGJVRFliVHwzNDU4NzY0NTIzMjM5MzQ4ODc3?share_link_id=899541514039).
+* You will find all lecture demos and notes [here](./demos).
+* You will find all project guidelines [here](./projects/README.md).
+* You will find all Hackerrank assignments [here](./hackerrank-exercises/README.md).
+* You will be provided the "How to Do Well In QC" document right after the QC Orientation on the second day of training. This will be useful while you study for QCs and quizzes throughout training.
 * You can find all other resources [here](./misc/README.md) (other assignments/training resources, contacts, timesheets, and any other Revature resources).
 
 ## Weekly Schedule:
