@@ -8,7 +8,7 @@ Here you will find all of the notes & resources for training.
   - Misc: Basic problem solving techniques in coding through debugging
 
 ## So how do I get started?
-1. **Set up your environment.** Follow the instructions [here](./week-0/windows-environment-setup/windows-environment-setup.md) to get started.
+1. **Set up your environment.** Follow the instructions [here for Windows](./misc/environment-setup/windows/README.md) or [here for Mac](./misc/environment-setup/mac/README.md)to get started.
 2. **Clone this repo on your local machine.** I will also show you how to do this on the first day if you cannot do this on your own.
 3. **Sign up for Hackerrank (if you don't already have an account)!** Sign up [here](https://www.hackerrank.com/)!
 4. **Sign up for LeetCode (if you don't already have an account)!** Sign up [here](https://leetcode.com) and get started the [Data Structures](https://leetcode.com/study-plan/data-structure/) study plan! This will help you better understand some of the data structures & algorithmic problems that we will encounter during training.
