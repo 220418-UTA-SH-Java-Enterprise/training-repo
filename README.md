@@ -11,7 +11,8 @@ Here you will find all of the notes & resources for training.
 1. **Set up your environment.** Follow the instructions [here](./week-0/windows-environment-setup/windows-environment-setup.md) to get started.
 2. **Clone this repo on your local machine.** I will also show you how to do this on the first day if you cannot do this on your own.
 3. **Sign up for Hackerrank (if you don't already have an account)!** Sign up [here](https://www.hackerrank.com/)!
-4. You are all set!
+4. **Join the Slack channel** for this cohort by following the invite link [here](https://join.slack.com/t/220418utashja-jiq4047/shared_invite/zt-1795ehv2b-GZf7exMYhLueQYp_jQ4GqQ).
+5. You are all set!
 
 ## So what's next?
 * You will find all visual boards [here](https://miro.com/welcome/SG5BTnluYjFXVlBZeVRZVUxXaTc5anJxTkZWaE5adDVYS05kNTQ4a0ZTbU1jNjF3SVJaUGtwRXV1dGJVRFliVHwzNDU4NzY0NTIzMjM5MzQ4ODc3?share_link_id=899541514039).
