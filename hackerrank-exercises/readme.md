@@ -6,3 +6,4 @@
 3. [Java Loops I](https://www.hackerrank.com/challenges/java-loops-i/problem)
 4. [Staircase](https://www.hackerrank.com/challenges/staircase/problem)
 5. [Single Array Sum](https://www.hackerrank.com/challenges/simple-array-sum/problem)
+6. [Funny String](https://www.hackerrank.com/challenges/funny-string/problem)
