@@ -1,1 +1,1 @@
-User [id=1, username=aaknox, password=password, firstName=Azhya, lastName=Knox, email=azhya.knox@revature.com]
+User [id=2, username=tom_thumb, password=password, firstName=Tom, lastName=Thumb, email=tom.thumb@revature.com]

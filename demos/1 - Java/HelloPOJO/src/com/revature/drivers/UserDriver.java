@@ -16,6 +16,46 @@ public class UserDriver {
 		Scanner in = new Scanner(System.in);
 		System.out.println("Welcome User! Please register for our app!!");
 		
+		User target = registerUser();
+		
+		char answer = in.next().toLowerCase().charAt(0);
+		
+		/* Operators:
+		 * == <- equals
+		 * != <- not equals
+		 * || <- or (bar)
+		 * && <- and
+		 * <= <- less than or equal to
+		 * >= <- greater than or equal to
+		 * 
+		 * |, & <- shortcircuit (not commonly used in practice)
+		 * 
+		 * Arthimetic operators:
+		 * % <- modulus (division but returns the reminder)
+		 * forward stash (/) <- division
+		 *  * <- multiplication
+		 *  + <- addition
+		 *  - <- subtraction
+		 *  ++ <- increments by 1
+		 *  -- <- decrements by 1
+		 * */
+		
+		while(answer != 'y') {
+			if(answer == 'y') {
+				userService.addUser(target);
+				break;
+			}else {
+				target = registerUser(); //recursion
+				answer = in.next().charAt(0);
+			}
+		}
+		
+		in.close();
+	}
+	
+	public static User registerUser() {
+		Scanner in = new Scanner(System.in);
+		
 		System.out.print("Please provide a id number: ");
 		int id = in.nextInt();
 		
@@ -42,11 +82,9 @@ public class UserDriver {
 				email,
 				password));
 		
-		char answer = in.next().charAt(0);
+		in.close();
 		
-		if(answer == 'y') {
-			userService.addUser(new User(id, username, password, firstName, lastName, email));
-		}
+		return new User(id, username, password, firstName, lastName, email);
 	}
 
 }
