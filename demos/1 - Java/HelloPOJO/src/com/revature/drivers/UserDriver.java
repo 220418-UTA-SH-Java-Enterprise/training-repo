@@ -6,6 +6,10 @@ import com.revature.models.User;
 import com.revature.services.UserService;
 import com.revature.services.UserServiceImpl;
 
+/* What is POJO Design Pattern?
+ * - POJO = using either abstract classes or interfaces to modularize our applications to better manage our business logic
+ * 
+ */
 public class UserDriver {
 
 	//this instance will be used to make service calls to our lower layers of our app
