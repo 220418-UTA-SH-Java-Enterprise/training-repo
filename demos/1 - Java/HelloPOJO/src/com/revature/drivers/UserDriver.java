@@ -11,51 +11,33 @@ public class UserDriver {
 	//this instance will be used to make service calls to our lower layers of our app
 	//aka handling our business logic of our app
 	public static UserService userService = new UserServiceImpl();
+	public static Scanner in = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
 		System.out.println("Welcome User! Please register for our app!!");
 		
 		User target = registerUser();
 		
 		char answer = in.next().toLowerCase().charAt(0);
 		
-		/* Operators:
-		 * == <- equals
-		 * != <- not equals
-		 * || <- or (bar)
-		 * && <- and
-		 * <= <- less than or equal to
-		 * >= <- greater than or equal to
-		 * 
-		 * |, & <- shortcircuit (not commonly used in practice)
-		 * 
-		 * Arthimetic operators:
-		 * % <- modulus (division but returns the reminder)
-		 * forward stash (/) <- division
-		 *  * <- multiplication
-		 *  + <- addition
-		 *  - <- subtraction
-		 *  ++ <- increments by 1
-		 *  -- <- decrements by 1
-		 * */
-		
-		while(answer != 'y') {
+		do {
 			if(answer == 'y') {
 				userService.addUser(target);
-				break;
 			}else {
 				target = registerUser(); //recursion
 				answer = in.next().charAt(0);
 			}
-		}
+		} while(answer != 'y');
+		
 		
 		in.close();
+		
+		System.out.println("--------");
+		
+		System.out.println(userService.getUserById(2));
 	}
 	
 	public static User registerUser() {
-		Scanner in = new Scanner(System.in);
-		
 		System.out.print("Please provide a id number: ");
 		int id = in.nextInt();
 		
@@ -81,8 +63,6 @@ public class UserDriver {
 				lastName,
 				email,
 				password));
-		
-		in.close();
 		
 		return new User(id, username, password, firstName, lastName, email);
 	}

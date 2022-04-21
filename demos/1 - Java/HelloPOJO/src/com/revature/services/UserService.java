@@ -10,7 +10,7 @@ public interface UserService {
 	
 	public User editUser(User u);
 	
-	public User getUserById(int id);
+	public String getUserById(int id);
 	
 	public void deleteUser(User u);
 }

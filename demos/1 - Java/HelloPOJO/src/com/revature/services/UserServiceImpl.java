@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import com.revature.exceptions.*;
 
@@ -35,7 +37,7 @@ public class UserServiceImpl implements UserService{
 	public User addUser(User u) {
 		try {
 			//1. serialize our user (convert object to byte[])
-			FileOutputStream output = new FileOutputStream(createDBConnection());
+			FileOutputStream output = new FileOutputStream(createDBConnection(), true);
 			//2. write that binary data into our text file
 			output.write(u.toString().getBytes());
 			//3. print successful addition message
@@ -60,9 +62,17 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User getUserById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getUserById(int id) {
+		String data = "";
+		
+		try {
+			data = new String(Files.readAllBytes(createDBConnection().toPath()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return data;
 	}
 
 	@Override
