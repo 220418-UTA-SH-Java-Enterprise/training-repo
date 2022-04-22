@@ -46,9 +46,6 @@ If you need help formatting your answers, look to the 'How to Do Well in QC' doc
     - Delete a file
 - How do file permissions work on a Linux system?
 
-## DS & A Questions
-
-
 ## Java Questions
 - What is Java? What are some of the features/benefits of Java and what do they mean?
 - What is JRE / JDK / JVM? 
@@ -116,6 +113,7 @@ If you need help formatting your answers, look to the 'How to Do Well in QC' doc
 - What is the difference between the Comparable and Comparator interfaces? 
 - What are generics? What is the diamond operator (<>)? 
 - Create and instantiate a generic class. Create and use a generic method.
+- What is the generic wildcard? What does it mean? How do you use in your Java code?
 - How do you serialize / deserialize an object in Java? 
 - Difference between FileReader and BufferedReader? 
 - Explain the try-with-resources syntax 
@@ -123,3 +121,34 @@ If you need help formatting your answers, look to the 'How to Do Well in QC' doc
 - What is Maven?
 - Where / when does Maven retrieve dependencies from? Where are they stored locally? 
 - What is the POM and what is the pom.xml? 
+- What are the OOP Pillars? What do each of them mean?
+- Be able to give a definition, real-life example, and Java-related example about each of the pillars:
+    - Abstraction
+    - Polymorphism
+    - Inheritance
+    - Encapsulation
+- What are states in OOP? Behaviors?
+- What is shadowing?
+- What is a covariant?
+
+## DS & A Questions
+- What is a data structure? What is an algorithm?
+- How would you make your own algorithm?
+- What is a breadcrumb statement?
+- What is the difference between time complexity and space complexity?
+- What are asymptotic notations / What is Big-O?
+- What is amortized analysis?
+- What is a stack?
+- What is an array?
+- How are arrays indexed?
+- What is recursion?
+- What is an ArrayList?
+
+## Other Questions
+- What is SDLC?
+- Explain the different phases of SDLC and its purpose to software development in general.
+- What is a sprint?
+- What is a daily scrum meeting?
+- What is a retrospective?
+- What is SOLID? What does it stand for?
+- What is an IDE?
