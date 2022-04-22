@@ -131,22 +131,122 @@ public class MyArrayList<T> implements MyList<T> {
 		elements = newElements;
 	}
 
-	@Override
-	public T set(int index, T element) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	/**
+     * Replaces the element at the specified position in this list with the
+     * specified element (optional operation).
+     *
+     * @param index index of the element to replace
+     * @param element element to be stored at the specified position
+     * @return the element previously at the specified position
+     */
+    @Override
+    @SuppressWarnings({"unchecked"})
+    public T set(int index, T element) {
+        if (notInRange(index)) throw new IndexOutOfBoundsException();
+        T oldElement = (T) elements[index];
+        elements[index] = element;
+        return oldElement;
+    }
 
-	@Override
-	public int indexOf(T element) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    /**
+     * Removes the element at the specified position in this list. Shifts any
+     * subsequent elements to the left (subtracts one from their indices).
+     * Returns the element that was removed from the list.
+     *
+     * @param index the index of the element to be removed
+     * @return the element previously at the specified position
+     * @throws IndexOutOfBoundsException if the index is out of range (index < 0 || index >= size())
+     */
+    @Override
+    @SuppressWarnings({"unchecked"})
+    public T remove(int index) {
+        if (notInRange(index)) throw new IndexOutOfBoundsException();
+        T oldElement = (T) elements[index];
+        removeAtIndex(index);
+        size--;
+        return oldElement;
 
-	@Override
-	public int lastIndexOf(T element) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    }
+
+    /**
+     * Returns the index of the first occurrence of the specified element in this list,
+     * or -1 if this list does not contain the element. More formally, returns the lowest
+     * index i such that (o==null ? get(i)==null : o.equals(get(i))), or -1 if there is
+     * no such index.
+     *
+     * @param element element to search for
+     * @return the index of the first occurrence of the specified element in this list,
+     *         or -1 if this list does not contain the element
+     */
+    @Override
+    public int indexOf(T element) {
+        for (int i = 0; i < size; i++) {
+            if ((elements[i] == null && element == null) || (elements[i] != null && elements[i].equals(element))) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Returns the index of the last occurrence of the specified element in this list,
+     * or -1 if this list does not contain the element. More formally, returns the highest
+     * index i such that (o==null ? get(i)==null : o.equals(get(i))), or -1 if there is
+     * no such index.
+     *
+     * @param element element to search for
+     * @return the index of the last occurrence of the specified element in this list,
+     *         or -1 if this list does not contain the element
+     */
+    @Override
+    public int lastIndexOf(T element) {
+        for (int i = size - 1; i >= 0; i--) {
+            if ((elements[i] == null && element == null) || (elements[i] != null && elements[i].equals(element))) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    protected boolean notInRange(int index) {
+        return index < 0 || index >= size;
+    }
+
+    protected void resizeBackingArrayIfNeeded() {
+        if (size >= elements.length * 0.75) {
+            Object[] newBackingArray = new Object[nextSize()];
+            System.arraycopy(elements, 0, newBackingArray, 0, elements.length);
+            elements = newBackingArray;
+        }
+    }
+
+    protected boolean resizeWillBeNeeded(int nextSize) {
+        return (nextSize >= elements.length * 0.75);
+    }
+
+    protected int nextSize() {
+        return (int) (elements.length * 0.5) + elements.length;
+    }
+
+    private void removeAtIndex(int index) {
+        if (index == 0) {
+            Object[] nextElements = new Object[elements.length];
+            System.arraycopy(elements, 1, nextElements, 0, elements.length - 2);
+            elements = nextElements;
+        } else if (index == size() - 1) {
+            elements[index] = null;
+        } else {
+            Object[] newElements = new Object[elements.length];
+            System.arraycopy(elements, 0, newElements, 0, index);
+            System.arraycopy(elements, index + 1, newElements, index, elements.length - index - 1);
+            elements = newElements;
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(elements);
+    }
 
 }
