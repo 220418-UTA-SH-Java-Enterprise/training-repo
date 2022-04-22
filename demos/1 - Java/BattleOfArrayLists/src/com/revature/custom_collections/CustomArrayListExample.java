@@ -1,4 +1,4 @@
-package com.revature.arraylist;
+package com.revature.custom_collections;
 
 public class CustomArrayListExample {
 
