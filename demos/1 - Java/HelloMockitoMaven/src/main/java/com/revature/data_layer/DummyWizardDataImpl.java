@@ -11,9 +11,9 @@ public class DummyWizardDataImpl implements DummyWizardData {
 
 	@Override
 	public void add(Wizard w) {
-		System.out.println("In data layer: adding new wizard...\n" + w);
 		WIZARD_ID++;
 		w.setId(WIZARD_ID);
+		System.out.println("In data layer: adding new wizard...\n" + w);
 		list.add(w);
 	}
 
