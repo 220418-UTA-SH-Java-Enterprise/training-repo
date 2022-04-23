@@ -18,4 +18,9 @@ public class WizardServiceImpl implements WizardService {
 		wizardData.delete(w);
 	}
 
+	@Override
+	public Wizard getWizard(int index) {
+		return wizardData.get(index);
+	}
+
 }

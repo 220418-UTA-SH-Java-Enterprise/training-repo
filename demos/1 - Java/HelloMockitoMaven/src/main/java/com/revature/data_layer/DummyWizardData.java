@@ -6,4 +6,5 @@ public interface DummyWizardData {
 
 	void add(Wizard w);
 	void delete(Wizard w);
+	Wizard get(int index);
 }
