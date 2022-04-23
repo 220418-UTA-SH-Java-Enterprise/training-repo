@@ -35,12 +35,20 @@ public class DummyWizardDataImpl implements DummyWizardData {
 	}
 
 	@Override
-	public void add(Wizard w) {
+	public boolean add(Wizard w) {
 		WIZARD_ID++;
 		w.setId(WIZARD_ID);
 		System.out.println("In data layer: adding new wizard...\n" + w);
+		int oldSize = list.size();
+		System.out.println("In data layer: size before addition: " + list.size());
 		list.add(w);
 		System.out.println("In data layer: list size is now: " + list.size());
+		
+		if(oldSize < list.size()) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	@Override

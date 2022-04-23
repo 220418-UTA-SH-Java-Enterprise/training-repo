@@ -1,83 +1,65 @@
 package com.revature.service_tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
-
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import com.revature.models.Wizard;
 import com.revature.data_layer.DummyWizardDataImpl;
 import com.revature.service_layer.WizardServiceImpl;
 
+/* For more information about Mockito, please visit these resources:
+ * 1. Stubbing & Mocking with Mockito and JUnit: https://semaphoreci.com/community/tutorials/stubbing-and-mocking-with-mockito-2-and-junit
+ * 2. Troubleshooting Mockito (StackOverflow): https://stackoverflow.com/questions/64725199/mockito-unfinishedstubbingexception-thrown-on-a-junit-test-case-which-calls-a-vo?noredirect=1#comment114442210_64725199
+ * 3. Mockito JUnit Tutorial (YouTube): https://youtu.be/HsQ9OwKA79s
+ * */
 public class MyServiceTest {
-	
-	private WizardServiceImpl realWizardService;
-	
-	@InjectMocks
+	//Class to be tested
 	private WizardServiceImpl wizardService;
 	
-	@Mock
+	//dependencies (will be mocked)
 	private DummyWizardDataImpl wizardDataMock;
+	
+	//test data
+	private Wizard w;
 
 	@Before
 	public void setUp() {
-		wizardService = new WizardServiceImpl();
+		/*Mockito setup*/
+		//1. mock the depending classes
+		wizardDataMock = Mockito.mock(DummyWizardDataImpl.class);
 		
-		realWizardService = new WizardServiceImpl();
+		//2. inject your service with mocked classes
+		wizardService = new WizardServiceImpl(wizardDataMock);
 		
-		MockitoAnnotations.initMocks(this);
+		//3. provide a wizard stub to test with
+		w = new Wizard();
+		w.setId(1);
+		w.setName("Harry Potter");
+		w.setSpell("Patronus");
 	}
 
 	/**
 	 * This would be a test for an application's service layer with Mockito
-	 * (which we do not have in this example).
 	 **/
 	@Test
 	public void addingWizard_mockito_positive_test() {
 		//arrange
-		//test object declarations
-		Wizard w = new Wizard(1, "Harry Potter", "Patronus");
-		ArrayList<Wizard> list = new ArrayList<>();
-		list.add(w);
-		
 		//here, we are telling Mockito what to do with our mock method calls 
 		//and what to expect in return from that call
-		when(wizardDataMock.getList()).thenReturn(list);
-		when(wizardDataMock.get(0)).thenReturn(new Wizard(1, "Harry Potter", "Patronus"));
+		when(wizardDataMock.add(w)).thenReturn(true);
 		
 		//act
 		//run targeted test method with service injector
 		wizardService.createNewWizard(w);
 		
-		
 		//assert
 		//verify that the dao mock ran with injector
-		verify(wizardDataMock, times(1)).get(0);
-	}
-	
-	/**
-	 * This would be a test for a real application's service layer without Mockito
-	 * (currently being ignored)
-	 **/
-	@Test
-	public void addingWizard_regular_positive_test() {
-		Wizard w = new Wizard(0, "Ron Weasley", "Wingardium Leviosa");
-		
-		realWizardService.createNewWizard(w);
-		
-		assertEquals(1, realWizardService.getWizard(0).getId());
+		verify(wizardDataMock, times(1)).add(w);
 	}
 
 }

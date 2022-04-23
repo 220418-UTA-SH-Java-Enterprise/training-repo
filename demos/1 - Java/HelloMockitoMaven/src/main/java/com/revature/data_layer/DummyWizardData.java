@@ -4,7 +4,7 @@ import com.revature.models.Wizard;
 
 public interface DummyWizardData {
 
-	void add(Wizard w);
+	boolean add(Wizard w);
 	void delete(Wizard w);
 	Wizard get(int index);
 }

@@ -6,7 +6,15 @@ import com.revature.models.Wizard;
 
 public class WizardServiceImpl implements WizardService {
 
-	private static DummyWizardData wizardData = new DummyWizardDataImpl();
+	private static DummyWizardData wizardData;
+	
+	public WizardServiceImpl() {
+		wizardData = new DummyWizardDataImpl(); 
+	}
+	
+	public WizardServiceImpl(DummyWizardDataImpl wD) {
+		wizardData = wD;
+	}
 	
 	@Override
 	public void createNewWizard(Wizard w) {
