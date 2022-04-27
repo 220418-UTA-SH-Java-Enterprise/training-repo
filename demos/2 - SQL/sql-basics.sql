@@ -83,6 +83,42 @@ create table departments(
 	monthly_budget numeric(8, 2) -- first # is precision (# of digits allowed), second # is scale (# of decimal places)
 );
 
+create table employees(
+	id serial,
+	first_name varchar(25) not null,
+	last_name varchar(25) not null,
+	birthdate date not null,
+	monthly_income numeric(7, 2),
+	department_id int,
+	hire_date date default current_date,
+	job_title varchar(25) not null,
+	email varchar(320) not null,
+	
+	--another way of declaring constraints (restrictions to a column's behavior)
+	constraint employees_pk
+	primary key (id),
+	
+	--foreign key constraint here
+	constraint employee_department_fk
+	foreign key (department_id)
+	references departments
+	
+	--by default, FKs automatically point to the PK of the referenced table 
+	--FKs can point to non-PK columns in a referenced table, so long as the referenced column is UNIQUE
+);
+
+create table products(
+	id serial,
+	name varchar(50) not null,
+	price numeric(7, 2) default 0,
+	expiration_date date not null
+);
+
+alter table products
+add constraint products_pk primary key (id);
+-- No need to COMMIT the above statements, DDL statements are implicitly commited
+
+/* INSERT STATEMENTS */
 -- sql strings are single-quoted
 insert into departments values (1, 'Accounting', 20000);
 insert into departments (name, monthly_budget) values('Marketing', 15000);
@@ -95,6 +131,31 @@ values
 	('Customer Service', 2000),
 	('Internal Affairs', 5000);
 
+insert into employees (first_name, last_name, birthdate, monthly_income, department_id, hire_date, job_title, email)
+values 
+	('John', 'Smith', date '1995-01-01', 4000.00, 1, date '2015-03-28', 'AC_ACCOUNT', 'jsmith@company.com'),
+	('JAMES', 'BOSH', date '1992-02-15', 3500.00, 2, date '2014-07-01', 'MK_REP', 'JBOSH'),
+	('LUISA', 'JACKSON', date '1970-03-08', 4500.00, 3, date '2013-08-29', 'IT_PROG', 'LJACKSON'),
+	('STUART', 'GARCIA', date '1965-04-12', 2000.00, 4, date '2010-02-15', 'HR_REP', 'SGARCIA'),
+	('JUSTIN', 'BLACK', date '1990-05-16', 2550.00, 1, date '2015-05-02', 'AC_ACCOUNT', 'JBLACK'),
+	('ANGIE', 'CROOD', date '1998-06-22', 1500.00, 1, date '2015-07-01', 'AC_ACCOUNT', 'ACROOD'),
+	('CHARLES', 'DEAN', date '1973-06-08', 2250.00, 3, date '2002-03-01', 'IT_PROG', 'CDEAN'),
+	('EDDIE', 'FARREL', date '1980-07-28', 3000.00, 1, date '2009-04-20', 'AC_ACCOUNT', 'EFARREL'),
+	('GEORGE', 'HAYES', date '1982-08-03', 2500.00, 2, date '2012-09-22', 'MK_REP', 'GHAYES'),
+	('IGOR', 'OSBOURNE', date '1987-09-11', 6000.00, 3, date '2014-11-14', 'IT_PROG', 'IKEYS'),
+	('LUKE', 'MINT', date '1985-10-19', 5000.00, 4, date '2011-01-08', 'HR_REP', 'LMINT'),
+	('NIGEL', 'OAKS', date '1997-11-05', 4750.00, 4, date '2014-10-01', 'HR_REP', 'NOAKS'),
+	('LUKE', 'GREEN', date '1995-02-05', 4750.00, 4, date '2015-09-01', 'HR_REP', 'LGREEN');
+
+insert into products (name, price, expiration_date)
+values 
+	('Aspirin', 5.00, date '2022-12-31'),
+	('Penicillin', 10.00, date '2019-04-30'),
+	('Insulin', 25.50, date '2023-05-31'),
+	('BadMedX', 6.00, date '1874-09-17'),
+	('GoodMed3000', 1300.25, date '2025-12-31');
+
+/* SELECT STATEMENTS */
 --query the records within the table 
 -- * is the the wildcard for all columns within a given table
 select * from departments;
@@ -103,3 +164,23 @@ select * from departments;
 -- where clause is used to filter our information based on a condition
 select * from departments where id = 4;
 select name, monthly_budget from departments where id = 3;
+
+select * from employees e; --this 'e' is a "table alias" (alternative name)
+select * from employees e where e.department_id = 1; --this 'e' is a "table alias" (alternative name)
+
+select * from products p;
+
+-- DML statements must be explicitly committed
+-- Even though DBeaver auto-commits for you, don't rely on this.
+commit;
+
+delete from products; --a delete statement without a where clause will delete all records from the table
+
+rollback; --takes you back to the previous SAVEPOINT or commit 
+-- rolling back to a savepoint and then rolling back again will take you to the previous commit
+-- you cannot rollback past a commit 
+-- making a savepoint when one already exists will overwrite the previous one (aka only one savepoint can exist at a time)
+
+--++++++++++++++++++++++++++
+--ERD = entity relational diagram = a visualization of our table schema in our database
+
