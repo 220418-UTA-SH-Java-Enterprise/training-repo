@@ -267,3 +267,22 @@ set abbr_name = substring(name, 1, 4);
 
 --LIMIT can either restrict how your column takes in information for a record or delimited the number of items in your result set
 select * from products limit 5;
+
+
+/* Normalization is the concept that all data in our database is structured with referenial integrity.
+ * 
+ * - We can achieve this by eliminating data reduncancy to enhance the integrity
+ * 0NF = a single mass of chaos as your database (you have everything in one table)
+ * 1NF = every table has a unique identifer (aka must have PKs)
+ * ex. everyone vs. SSNs
+ * 
+ * 2NF = database has already followed 1st NF and there are no partial dependencies among your tables
+ * 	- there should not be any field with any table that can qualify as a candidate key
+ * 	- candidate keys are unique and not null columns that can become a primary key
+ * 
+ * 3NF = database has already 2nd NF and there are no transient dependencies amoung your tables
+ * 	- should be no composite keys (if you do have this, then you need to make an additional table aka split current table into two)
+ * 	- ensure that there is no reduction of data duplication by having solid foreign key relationships
+ */
+ * 
+ */
