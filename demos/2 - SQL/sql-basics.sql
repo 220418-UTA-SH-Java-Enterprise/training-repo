@@ -184,3 +184,86 @@ rollback; --takes you back to the previous SAVEPOINT or commit
 --++++++++++++++++++++++++++
 --ERD = entity relational diagram = a visualization of our table schema in our database
 
+
+--get all products
+-- ORDER BY (sorts the records of the result set)
+--by default it will be in ascending order
+--asc (ascending) is implied and not required (ok to include though)
+select * from products order by expiration_date;
+
+select * from products where expiration_date > date '2023-01-01'; --preferred date syntax
+
+select * from products where expiration_date > '01-JAN-2023'; --the date keyword provides date formatting for your records
+
+-- and combines where clause conditions together, while or will return what is true in either condition
+select * from products where name like 'A%' or name like 'a%';
+--the like keyword will filter your search based on a pattern
+--the % serves as a wildcard character in the pattern format
+--overall, this is using regular expression (regex) to make these patterns
+select * from products where name like '%a%' or name like '%A%';
+
+--the as keyword allows us to make column alias
+select name, price as original_price, (price - (price * .3)) as sales_price from products;
+
+--multiple conditionals in where 
+select *
+from products
+where 
+(
+	id < 5
+	or name = 'Aspirin'
+	and price > 10
+)
+and
+(
+	price <= 10
+	or expiration_date = '2018-04-30'
+);
+
+--and, or, not are logical operators in sql
+
+--distinct keyword eliminates duplicates from the result set
+select distinct department_id from employees;
+
+--a record is considered a duplicate if all of the values of the record match to another
+select distinct first_name, last_name, department_id from employees;
+
+/* Scalar Functions
+ * - aka single-row/value function
+ * - returns a value of every row that is processed in a query
+ * 
+ * - Types:
+ * 		- Numeric functions
+ * 		- Character functions
+ * 		- Date functions
+ */
+
+select substring('test', 1, 3); --inclusive range, index-1 based 
+select abs(-11);
+--floor will go to the lowest possible whole number of the given digit
+--ceiling will go to the next whole number of given digit 
+-- round will go to the closest promixed integer of the given digit (within a .5 range it will go up or down to a whole number)
+select floor(2.678) as floor_value, ceiling(2.678) as ceiling_value, round(2.678, 2) as round_value;
+
+select first_name, last_name, age(current_date, birthdate) as current_age from employees;
+
+/* Aggregate functions
+ * 	- Operations which can be performed on a group of records in order to provide a single value/result
+ */
+
+select min(price) as min_price, max(price) as max_price, avg(price) as average_price, sum(price) as sum_price
+from products;
+
+--the count function only counts non-null values!
+select count(name) from products;
+
+-- add a new column to products for an abbreviated name for each product
+alter table products
+add column abbr_name varchar(4);
+
+-- update the values within the newly added column to contain the abbreviate name of each product
+update products 
+set abbr_name = substring(name, 1, 4);
+
+--LIMIT can either restrict how your column takes in information for a record or delimited the number of items in your result set
+select * from products limit 5;
