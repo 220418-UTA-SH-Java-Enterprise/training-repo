@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 
 public class ConnectionUtil {
 
+	//this instance is created to track events within this class
 	private static Logger logger = Logger.getLogger(ConnectionUtil.class);
 
 	public static Connection getConnection() {
@@ -30,7 +31,7 @@ public class ConnectionUtil {
 		try {
 			// this is more secure as you don't expose all your credentials
 			logger.debug(String.format(
-					"Making a database credentials with following credentials: \nURL: %s \nUsername: %s \nPassword: %s", 
+					"Making a database connection with following credentials: \nURL: %s \nUsername: %s \nPassword: %s", 
 					System.getenv("db_url"), 
 					System.getenv("db_username"), 
 					System.getenv("db_password")

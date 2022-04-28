@@ -31,7 +31,7 @@ public class MainDriver {
 		System.out.println("0 - Exit app");
 		System.out.println("\nSelection: ");
 		
-		int userPick = scanner.nextInt();
+		int userPick = Integer.parseInt(scanner.nextLine());
 		
 		switch (userPick) {
 		case 1:
@@ -40,13 +40,13 @@ public class MainDriver {
 			
 			//get info from user
 			System.out.println("Please provide a name for this new product: ");
-			String name = scanner.next();
+			String name = scanner.nextLine();
 			
 			System.out.println("Please provide a price for this new product: ");
-			double price = scanner.nextDouble();
+			double price = Double.parseDouble(scanner.nextLine());
 			
 			System.out.println("Please provide an expiration date for this new product (format: YYYY-MM-DD): ");
-			String expDateString = scanner.next();
+			String expDateString = scanner.nextLine();
 			LocalDate exp_date = LocalDate.parse(expDateString);
 			
 			target.setProductId(0);

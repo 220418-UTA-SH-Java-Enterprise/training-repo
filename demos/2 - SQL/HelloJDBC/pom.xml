@@ -8,6 +8,24 @@
 	<name>HelloJDBC</name>
 	<description>example project using JDBC in the data/repository layer</description>
 
+	<!-- XML = extensible markup language -->
+	<!-- markup languages = HTML = uses tags to set elements/properties in a structured manner -->
+	<!-- xml elements can be defined as building blocks of an XML document -->
+	<!-- these elements can hold text, attributes, properties, etc by enclosing information between start and end tags  -->
+	<!--  commonly XML is used for configurations of applications -->
+	
+	<!--  
+		XML attributes are child elements to XML elements:
+		attributes give an elements a particular characterstic
+		ex. (animal is element, species is attribute)
+		<animal species="reptile">
+			...
+		</animal>
+	-->
+	
+	<!-- In XML, namespaces provide a method to avoid element name conflicts. Namespaces provide prefixes at the top of any XML file about the rules at which XML elements must follow 
+	ex. the namespace in this pom file is listed as "xmlns" attributes
+	-->
 	<!-- 1. configuring my java version to Java 8 -->
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -24,6 +42,22 @@
 		
 		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
 		<!-- Log4j is a logging framework that we can use in our applications to track events/bugs as they occur in runtime -->
+		<!--  
+			What is logging?
+			- logging is the process of writing log messages during the execution of a program to a centralized place.
+			- Advantages:
+				- allows you to report and persist errors and warnings and information that can later be retrieved and analyzed by a developer
+				- allows for better quality debugging since we can track the source of the errors during execution
+				
+			- Logging levels:
+				- ALL = includes all levels
+				- DEBUG = used to designate information events that are useful to debug an app
+				- INFO = used to designate informational events that highlight the progress of an application
+				- WARN = used to designate potentially harmful situations
+				- ERROR = designates error events that might still allow the app to continue running
+				- FATAL = designate very severe error events that will presumably lead to the app aborting
+				- OFF = turning off logging throughout the application
+		-->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
