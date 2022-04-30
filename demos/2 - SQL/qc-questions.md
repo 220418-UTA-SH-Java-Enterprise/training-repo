@@ -1,16 +1,15 @@
 # Week 2: SQL & JDBC Study Questions
 You should research and be able to answer the following questions at the ned of each day:
 
-> - Use Google and [SQL class notes](https://github.com/210823-Enterprise/demos/blob/main/week2/notes/sql.md). [AWS notes here](https://github.com/210823-Enterprise/demos/blob/main/week2/notes/aws.md)<br>
+> - Use Google and notes to study. <br>
 > - ❗ *Remember that when you present your Project 0, you will need to have your database connected to an AWS RDS running PostgreSQL engine.*
 > - The [PostgreSQL Documentation](https://www.postgresqltutorial.com/) is a great resource (and easy to follow).<br>
 > - :star: **[W3 Schools SQL Tutorial](https://www.w3schools.com/sql/)**
-> :star: For extra practice try the [Chinook Query Challenge](https://github.com/210823-Enterprise/demos/tree/main/week2/chinook-challenge)
 
 <br>
 
 ## `Study Questions`
-> Go over these questions to prepare for Week 5 QC (Monday Sept 20th)
+> Go over these questions to prepare for QC
 <br>
 
 ## SQL Questions
