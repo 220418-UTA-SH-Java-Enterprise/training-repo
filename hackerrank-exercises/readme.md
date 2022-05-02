@@ -26,3 +26,6 @@ SQL:
 10. [Population Census](https://www.hackerrank.com/challenges/asian-population/problem)
 11. [Average Population of Each Continent](https://www.hackerrank.com/challenges/average-population-of-each-continent/problem)
 12. [Occupations](https://www.hackerrank.com/challenges/occupations/problem)
+
+### Week 3
+*No Hackerrank assignments for this week (Project 0 Presentations)*

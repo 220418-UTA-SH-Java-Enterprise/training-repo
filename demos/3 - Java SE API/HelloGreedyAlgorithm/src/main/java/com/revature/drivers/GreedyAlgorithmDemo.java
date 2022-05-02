@@ -33,7 +33,6 @@ package com.revature.drivers;
  */
 
 public class GreedyAlgorithmDemo {
-
 	//N – Maximum unit of food you can buy each day.
 	//S – Number of days you are required to survive.
 	//M – Unit of food required each day to survive.
