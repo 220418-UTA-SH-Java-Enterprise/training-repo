@@ -58,6 +58,9 @@ public class CollectionDriver {
 			}catch (InputMismatchException e) {
 				System.out.println(ANSI_RED + "ERROR: Menu option entered is an invalid input. See error in log. Closing app..."+ ANSI_RESET);
 				logger.error("InputMismatch - Numbers accepted here only. From - CollectionDriver:Main method. Stack Trace: ", new InvalidMenuSelectionException("Not a number input. Trace: " + e.toString()));
+			} catch (NumberFormatException e) {
+				System.out.println(ANSI_RED + "ERROR: Menu option entered is not a number. See error in log. Closing app..."+ ANSI_RESET);
+				logger.error("NOT A NUMBER - Numbers accepted here only. From - CollectionDriver:Main method. Stack Trace: ", new InvalidMenuSelectionException("Not a number input. Trace: " + e.toString()));
 			}
 		} while(pick != 6);
     }
