@@ -28,6 +28,7 @@ public class MainDriver {
 		System.out.println("2 - Get product by id");
 		System.out.println("3 - Get all products");
 		System.out.println("4 - Update a product");
+		System.out.println("5 - Login employee");
 		System.out.println("0 - Exit app");
 		System.out.println("\nSelection: ");
 		
@@ -165,6 +166,23 @@ public class MainDriver {
 				System.out.println("Changes aborted by user. Exiting app. Goodbye!");
 			}
 			
+			break;
+		case 5:
+			logger.info("In driver class: User chose option 5 (login employee)");
+			//prompt user to enter information
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Please enter your username (lastname):");
+			String username = sc.nextLine();
+			
+			System.out.println("Please enter your password (firstname):");
+			String password = sc.nextLine();
+			
+			boolean checkCredentials = productService.login(username, password);
+			if(checkCredentials == true) {
+				System.out.println("Successful login");
+			}else {
+				System.out.println("Invalid username and/or password. Please try again.");
+			}
 			break;
 		case 0:
 			logger.info("In driver class: User chose option 0 (close app)...");

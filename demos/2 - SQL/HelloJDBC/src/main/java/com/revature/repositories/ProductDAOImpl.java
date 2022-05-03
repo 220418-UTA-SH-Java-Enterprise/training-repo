@@ -13,12 +13,15 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.revature.models.Department;
+import com.revature.models.Employee;
 import com.revature.models.Product;
 import com.revature.util.ConnectionUtil;
 
 public class ProductDAOImpl implements ProductDAO {
 
 	private static Logger logger = Logger.getLogger(ProductDAOImpl.class);
+	private static DepartmentDao departmentDao = new DepartmentDaoImpl();
 
 	@Override
 	public boolean insert(Product p) {
@@ -159,6 +162,44 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 		
 		return list;
+	}
+
+	@Override
+	public Employee findByLastName(String lastname) {
+		logger.info("In DAO layer: getting employee info by id...");
+		Employee target = new Employee();
+		
+		try (Connection conn = ConnectionUtil.getConnection()) {
+			String sql = "SELECT * FROM employees WHERE last_name = ?;";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, lastname);
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				target.setEmployeeId(rs.getInt("id"));
+				target.setEmployeeFirstName(rs.getString("first_name"));
+				target.setEmployeeLastName(lastname);
+				DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				String birthdate = rs.getDate("birthdate").toString();
+				LocalDate birth_date = LocalDate.parse(birthdate, formatter1);
+				target.setEmployeeBirthdate(birth_date);
+				target.setEmployeeMonthlyIncome(rs.getDouble("monthly_income"));
+				Department tempDept = departmentDao.getDepartmentById(rs.getInt("department_id"));
+				target.setEmployeeDepartment(tempDept);
+				DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				String hiredate = rs.getDate("hire_date").toString();
+				LocalDate hire_date = LocalDate.parse(hiredate, formatter2);
+				target.setEmployeeHiredate(hire_date);
+				target.setEmployeeJobTitle(rs.getString("job_title"));
+				target.setEmployeeEmail(rs.getString("email"));
+			}
+
+			logger.info("Employee search by lastname was successful. " + target);
+		} catch (SQLException e) {
+			logger.warn("Unable to execute SQL statement", e);
+		}
+		
+		return target;
 	}
 
 }

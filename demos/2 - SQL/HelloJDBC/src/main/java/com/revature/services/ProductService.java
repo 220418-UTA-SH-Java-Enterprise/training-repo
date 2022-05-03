@@ -10,4 +10,5 @@ public interface ProductService {
 	public boolean editProduct(Product p);
 	public Product getProductById(int id);
 	public List<Product> getAllProducts();
+	public boolean login(String username, String password);
 }
