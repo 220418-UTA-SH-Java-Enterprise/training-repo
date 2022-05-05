@@ -21,6 +21,27 @@ public class MainDriver {
 		for(Book item: wishlist) {
 			System.out.println(item);
 		}
+		
+		System.out.println("------------------------");
+		List<Car> dealershipList = new ArrayList<>();
+		dealershipList.add(new Car(1, 1999, "Fiesta", "Ford"));
+		dealershipList.add(new Car(2, 2015, "F-150", "Ford"));
+		dealershipList.add(new Car(3, 2009, "Camry", "Toyota"));
+		dealershipList.add(new Car(4, 2022, "Maxium", "Nissan"));
+		
+		IdCompare idCompare = new IdCompare();
+		
+		//uses Comparator to sort by id instead of year
+		//With Comparator, sorting is through a separate class
+		//and it compares based on the condition provided by the developer rather than natural order
+		Collections.sort(dealershipList, idCompare);
+		
+		//With Comparable, it is meant for objects with natural ordering (aka the object itself must know how it is ordered).
+		//Collections.sort(dealershipList);
+		
+		for(Car car: dealershipList) {
+			System.out.println(car);
+		}
 	}
 
 }
