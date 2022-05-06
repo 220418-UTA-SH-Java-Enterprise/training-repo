@@ -1,3 +1,4 @@
+package com.revature;
 
 public class ThreadCreation {
 
@@ -11,7 +12,7 @@ public class ThreadCreation {
 		 * 
 		 * 1) Implement Runnable interface and pass it to a new Thread object's constructor
 		 * 
-		 * 2) Extend Thread class, and creat an object of that class
+		 * 2) Extend Thread class, and create an object of that class
 		 * 
 		 * 
 		 */
