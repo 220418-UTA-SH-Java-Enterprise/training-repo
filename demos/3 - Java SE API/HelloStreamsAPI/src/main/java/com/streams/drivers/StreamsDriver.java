@@ -60,7 +60,7 @@ public class StreamsDriver {
 			.forEach(System.out::println);
 		
 		//once you tap into a stream, the transformation that you do in that stream do not associate with the object itself
-		//names.forEach(System.out::println);
+		//names.forEach(System.out::println); //returns names in titleCase instead of uppercase
 	}
 
 }
