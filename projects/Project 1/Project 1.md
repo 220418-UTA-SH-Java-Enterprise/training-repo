@@ -51,23 +51,33 @@ Additionally, your team will need to build a simple CRUD web application based o
 
 ## Flowcharts
 **State-chart Diagram (Reimbursement Statuses)** 
+<br>
 ![](./imgs/state-chart.jpg)
+<br>
 
 **Reimbursement Types**
-
 Employees must select the type of reimbursement as: LODGING, TRAVEL, FOOD, or OTHER.
+<br>
 
 **Logical Model**
+<br>
 ![](./imgs/logical.jpg)
+<br>
 
 **Physical Model**
+<br>
 ![](./imgs/physical.jpg)
+<br>
 
 **Use Case Diagram**
+<br>
 ![](./imgs/use-case.jpg)
+<br>
 
 **Activity Diagram**
+<br>
 ![](./imgs/activity.jpg)
+<br>
 
 ## Technical Requirements
 ### MVP:
