@@ -86,12 +86,12 @@ Employees must select the type of reimbursement as: LODGING, TRAVEL, FOOD, or OT
 ### MVP:
 - [ ] The back-end system shall utilize one of the following: **1) JDBC, 2) Hibernate, or 3) Custom-made using Reflections API**. 
 - [ ] The back-end system shall connect to an **AWS RDS Postgres database**. 
-- [ ] Programmatic persistence of entities (basic CRUD support) using ORM or JDBC.
+- [ ] Programmatic persistence of entities (basic CRUD support) using ORM or JDBC/Hibernate.
 - [ ] File-based or programmatic configuration of entities (applicable for options 2 & 3 only).
+- [ ] The back-end source code should be included within the web application as a Maven dependency (option 3 only).
 - [ ] 60% line coverage of all service layer classes.
 - [ ] Generated Jacoco reports that display coverage metrics.
 - [ ] Usage of the java.util.Stream API within your project.
-- [ ] The back-end source code should be included within the web application as a Maven dependency.
 - [ ] The application shall use Postman to test endpoints that call your server-side components. 
 - [ ] The application shall follow proper layered architecture.
 - [ ] The application shall implement log4j for appropriate logging. 
@@ -107,8 +107,7 @@ Employees must select the type of reimbursement as: LODGING, TRAVEL, FOOD, or OT
 ## Init Instructions
 - Create a new private repository within this organization for your custom ORM (naming convention: `ers_orm_name_p1`; with `orm_name` being replaced by the name of your custom library)
     - Make sure to add your trainer and team members as contributors to the repo
-- Create another new private repostory within this organization for your ERS web application (naming convention: `ers_webapp_orm_name_p1`; with `orm_name` being replaced by the name of your custom library)
-    - Make sure to add your trainer and team members as contributors to the repo
+    - You would need a secondary repo if you are doing the custom ORM option to host your web app (naming convention: `ers_webapp_orm_name_p1`; with `orm_name` being replaced by the name of your custom library); if you are doing Hibernate or JDBC, you will only need **one** repository.
 
 ## Presentation
 - Finalized version of custom ORM and web application must be pushed to repository within this organization by the presentation date (**May 18th, 2022**)
