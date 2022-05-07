@@ -84,7 +84,7 @@ Employees must select the type of reimbursement as: LODGING, TRAVEL, FOOD, or OT
 
 **Overall Application Design Diagram**
 <br>
-![](./imgs/P1%20Design%20Pattern%20Layout.png)
+<img src="./imgs/P1%20Design%20Pattern%20Layout.png" style="background-color: #FFFFFF;">
 <br>
 
 ## Technical Requirements
