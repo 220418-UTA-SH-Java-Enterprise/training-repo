@@ -1,5 +1,5 @@
-# Project 1: Employee Reimbursment System (ERS) using Custom ORM
-Project 1 will be to create a custom object relational mapping (ORM) framework. This framework will allow for a simplified and SQL-free interaction with the relational data source. The requires of the project are purposefully vague, the intention is to allow for you to be creative in your implementation of this framework. There are many ways that this task can be approached, and you are encouraged to explore existing Java ORM implementations in order to get some inspiration. The minimum requirement for the custom ORM is to abstract JDBC boilerplate logic from the application which uses it.
+# Project 1: Employee Reimbursment System (ERS)
+Project 1 will be to use JDBC or an object relational mapping (ORM) framework. ORM frameworks will allow for a simplified and SQL-free interaction with the relational data source.
 
 Additionally, your team will need to build a simple CRUD web application based on the ERS specs provided below. You should leverage the Java EE Servlet API to expose endpoints that allow for interaction with the application.
 
@@ -14,6 +14,9 @@ Additionally, your team will need to build a simple CRUD web application based o
 - [ ] JUnit
 - [ ] Mockito
 - [ ] Apache Maven
+- [ ] JaCoCo
+- [ ] Hibernate (optional)
+- [ ] JDBC (optional)
 - [ ] Jackson library (for JSON marshalling/unmarshalling)
 - [ ] Java EE Servlet API (v4.0+)
 - [ ] PostGreSQL deployed on AWS RDS
@@ -81,16 +84,16 @@ Employees must select the type of reimbursement as: LODGING, TRAVEL, FOOD, or OT
 
 ## Technical Requirements
 ### MVP:
-- [ ] The back-end system shall use **your custom ORM** to connect to an **AWS RDS Postgres database**. 
-- [ ] JDBC logic is abstracted away by the custom ORM 
-- [ ] Programmatic persistence of entities (basic CRUD support) using custom ORM
-- [ ] File-based or programmatic configuration of entities
-- [ ] 60% line coverage of all service layer classes
-- [ ] Generated Jacoco reports that display coverage metrics
-- [ ] Usage of the java.util.Stream API within your project
-- [ ] Custom ORM source code should be included within the web application as a Maven dependency
+- [ ] The back-end system shall utilize one of the following: **1) JDBC, 2) Hibernate, or 3) Custom-made using Reflections API**. 
+- [ ] The back-end system shall connect to an **AWS RDS Postgres database**. 
+- [ ] Programmatic persistence of entities (basic CRUD support) using ORM or JDBC.
+- [ ] File-based or programmatic configuration of entities (applicable for options 2 & 3 only).
+- [ ] 60% line coverage of all service layer classes.
+- [ ] Generated Jacoco reports that display coverage metrics.
+- [ ] Usage of the java.util.Stream API within your project.
+- [ ] The back-end source code should be included within the web application as a Maven dependency.
 - [ ] The application shall use Postman to test endpoints that call your server-side components. 
-- [ ] The application shall follow proper layered architecture
+- [ ] The application shall follow proper layered architecture.
 - [ ] The application shall implement log4j for appropriate logging. 
 
 ### Stretch Goals:
@@ -109,7 +112,7 @@ Employees must select the type of reimbursement as: LODGING, TRAVEL, FOOD, or OT
 
 ## Presentation
 - Finalized version of custom ORM and web application must be pushed to repository within this organization by the presentation date (**May 18th, 2022**)
-- 10-15 minute live demonstration of the web application (that leverages your custom ORM); demonstration will be performed using Postman to query your API's endpoints
+- 10-15 minute live demonstration of the web application (that leverages your custom ORM/persistence app); demonstration will be performed using Postman to query your API's endpoints
 
 ### Resources for researching ORMs
 - [What is an ORM?](https://blog.bitsrc.io/what-is-an-orm-and-why-you-should-use-it-b2b6f75f5e2a)
