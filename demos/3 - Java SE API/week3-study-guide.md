@@ -26,6 +26,8 @@
 
 8. Why is Thread Pooling important? What about JDBC pooling?
 
+9. What is the Executor Service Design Pattern? How does it apply to running tasks with threads? [Resource](https://www.baeldung.com/java-executor-service-tutorial)
+
 <br>
 
 ## Advanced Java
@@ -89,3 +91,24 @@ while(iterator.hasNext()) {
 - What does it mean to modify beahvior at runtime?
 
 - What is a Dynamic Proxy? Invocation Handler?
+
+## DS & A
+- What is a depth-first/breadth-first search algorithm? How would one look like in your Java code? 
+- How does each algorithm do in performance in an application? 
+- What is the time/space complexity of each searching algorithm?
+[Resource for Depth-first vs Breadth-first](https://www.geeksforgeeks.org/difference-between-bfs-and-dfs/)
+- What is a binary search? [Resource](https://www.geeksforgeeks.org/binary-search/)
+- What are enums? [Resource](https://www.geeksforgeeks.org/enum-in-java/)
+
+## Misc.
+- Be able to describe each of these technologies and how to use them:
+  - JaCoCo
+    - How to run a JaCoCo report? (run `mvn test` in the root project directory in the terminal)
+    - What kind of metrics do you get from a generated JaCoCo report?
+  - Postman
+    - What can you use it for?
+
+- Know these Linux commands to do the following (also know basic syntax for each):
+    - How to examine the contents of a website from the terminal
+    - How to find the relative path to any given directory or file 
+    - How to find the absolute path to any given directory or file
