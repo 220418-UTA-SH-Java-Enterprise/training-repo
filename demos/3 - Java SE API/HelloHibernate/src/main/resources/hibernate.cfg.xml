@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!-- DTD stands for Document Type Definition -->
+<hibernate-configuration>
+	<session-factory>
+		<!-- Making sure the dialect points to Postgres -->
+		<property name="hibernate-dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		
+		<!-- This is pointing to the PostgreSQL driver dependency in our pom.xml file -->
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		
+		<!-- setting our JDBC connection credentials -->
+		<!-- Make sure you put this file in .gitignore for your repo -->
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">postgres</property>
+		
+		<!--  Connection Pool properties:
+				The connection pool is a method of speeding up DB calls.
+				Default size of connection pool is 20 connections.
+				Every time Hibernate starts up, 20 connections are established to our DB.
+				This way, when a session is created (aka an operation against our DB), it is
+				much faster than just plain JDBC.
+				
+		-->
+		<property name="hibernate.connection.pool_size">10</property>
+		<!-- the most important property -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		<!-- CREATE, VALIDATE, UPDATE, NONE -->
+
+		<!-- CREATE: drops all existing tables and objects with the names provided 
+			in annotations, and then Hibernate will recreate the schema for us (CREATE 
+			isn't the best for production, but useful for development -->
+
+		<!-- UPDATE: hibernate will not delete anything, but only add to a schema 
+			if there are objects that haven't been included yet -->
+
+		<!-- VALIDATE: best for production. Checks to make sure that everything 
+			is as expected (all tables and objects are where they're supposed to be) -->
+
+		<!-- NONE: hibernate will not do anything (no removals, no addition) -->
+
+		<!-- Prints out the SQL statments hibernate is executing agaiunst our database -->
+		<property name="hibernate.show_sql">true</property>
+
+		<!-- highlight then ctrl + shift + c for multiple lines -->
+
+		<!-- List of mapping files -->
+		<mapping class="com.revature.models.Crime" />
+		<mapping class="com.revature.models.SuperVillain" />
+      	<mapping class="com.revature.models.SuperPrison" />
+	</session-factory>
+</hibernate-configuration>

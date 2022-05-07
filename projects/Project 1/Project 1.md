@@ -82,6 +82,11 @@ Employees must select the type of reimbursement as: LODGING, TRAVEL, FOOD, or OT
 ![](./imgs/activity.jpg)
 <br>
 
+**Overall Application Design Diagram**
+<br>
+![](./imgs/P1%20Design%20Pattern%20Layout.png)
+<br>
+
 ## Technical Requirements
 ### MVP:
 - [ ] The back-end system shall utilize one of the following: **1) JDBC, 2) Hibernate, or 3) Custom-made using Reflections API**. 
