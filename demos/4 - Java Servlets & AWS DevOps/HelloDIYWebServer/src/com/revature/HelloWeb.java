@@ -13,7 +13,7 @@ import com.sun.net.httpserver.HttpServer;
  * -Web services are services spread over the web.
  * 
  * -Enables the communication between application over the web and provides
- * a standart protocol or format for communication.
+ * a standard protocol or format for communication.
  * 
  * -Using webservices two different applications designed in different languages
  * can talk to each other share information and exchange data
