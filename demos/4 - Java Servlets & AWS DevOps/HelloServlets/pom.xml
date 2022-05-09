@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.revature</groupId>
+  <artifactId>HelloServlets</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>HelloServlets</name>
+  
+  <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+    <!-- The javax.servlet dependency is an api that gives us classes and interfaces 
+			that describe and define the contracts between a servlet class and the runtime 
+			environment provided for each instance of a class by a conforming servlet 
+			container (Tomcat!). -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        
+        <!-- This is an object mapping library for converting a java object to 
+			JSON -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.10.2</version>
+		</dependency>
+    </dependencies>
+
+	<!-- configuring Tomcat to go to our desired URL -->
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+				    <groupId>org.apache.maven.plugins</groupId>
+				    <artifactId>maven-war-plugin</artifactId>
+				    <version>3.3.1</version>
+				</plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
