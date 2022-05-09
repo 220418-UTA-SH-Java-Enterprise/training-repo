@@ -166,5 +166,5 @@ buildNumber.properties
 # Support for Project snippet scope
 
 # Tomcat server files
-./demos/4 - Java Servlets & AWS DevOps/Servers/
+demos/4 - Java Servlets & AWS DevOps/Servers/
 # End of https://www.toptal.com/developers/gitignore/api/java,angular,visualstudiocode,maven,eclipse
