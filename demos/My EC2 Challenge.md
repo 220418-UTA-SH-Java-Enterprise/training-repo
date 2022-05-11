@@ -53,7 +53,11 @@ sudo cp target/ServletDemoAndLogin-0.0.1-SNAPSHOT.war /var/lib/tomcat/webapps/
 g. Start your Tomcat server in your EC2
 sudo service tomcat start
 ```
-h. Navigate to your EC2 endpoint on port 8080 to view your application hosted on Tomcat
+h. Navigate to your EC2 endpoint on port 8080 to view your application hosted on Tomcat:
+    ex. http://54.160.164.81:8080/HelloServlets-0.0.1-SNAPSHOT/test
+        54.....81 = Public IPv4 address from AWS
+        8080 = port number for Tomcat
+        HelloServlets-0.0.1-SNAPSHOT = name of your WAR file that you copied
 i. Done! Send your trainer of your app working at each endpoint via PM on Slack.
 
 # References:
