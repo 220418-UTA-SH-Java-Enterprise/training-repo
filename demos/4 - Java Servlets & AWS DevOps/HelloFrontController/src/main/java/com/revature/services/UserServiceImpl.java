@@ -63,9 +63,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public boolean deleteUser(User user) {
-		log.info("in service layer. removing user: " + user);
-		return udao.delete(user);
+	public boolean deleteUserById(int id) {
+		log.info("in service layer. removing user id: " + id);
+		return udao.deleteById(id);
 	}
 
 	

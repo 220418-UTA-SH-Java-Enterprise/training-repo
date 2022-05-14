@@ -18,5 +18,5 @@ public interface UserService {
 	
 	public boolean editUser(User user);
 	
-	public boolean deleteUser(User user);
+	public boolean deleteUserById(int id);
 }

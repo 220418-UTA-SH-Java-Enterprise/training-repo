@@ -207,7 +207,7 @@ public class RequestHelper {
 	}
 
 	public static void processUserDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		log.info("inside of request helper...processUserUpdate...");
+		log.info("inside of request helper...processUserDelete...");
 		BufferedReader reader = request.getReader();
 		StringBuilder s = new StringBuilder();
 
@@ -219,7 +219,7 @@ public class RequestHelper {
 		}
 
 		String body = s.toString(); 
-		String [] sepByAmp = body.split("&"); // separate username=bob&password=pass -> [username=bob, password=pass]
+		String [] sepByAmp = body.split("&");
 		
 		List<String> values = new ArrayList<String>();
 		
@@ -227,25 +227,15 @@ public class RequestHelper {
 			values.add(pair.substring(pair.indexOf("=") + 1)); // trim each String element in the array to just value -> [bob, pass]
 		}
 		log.info("User attempted to update with information:\n " + body);
-		// capture the actual username and password values
-		int id = Integer.parseInt(values.get(0)); //id numbers cannot be modifed!
-		String username = values.get(1); // bob
-		String password = values.get(2); // pass
-		String firstname = values.get(3);
-		String lastname = values.get(4);
+		// capture the actual ID value from the body
+		int id = Integer.parseInt(values.get(0));
 		
-		User tempUser = new User();
-		tempUser.setId(id);
-		tempUser.setUsername(username);
-		tempUser.setPassword(password);
-		tempUser.setFirstName(firstname);
-		tempUser.setLastName(lastname);
-		boolean isDeleted = userv.deleteUser(tempUser);
+		boolean isDeleted = userv.deleteUserById(id);
 
 		if (isDeleted) {
 			PrintWriter pw = response.getWriter();
-			log.info("Delete successful! Removed user: " + tempUser);
-			String json = om.writeValueAsString(tempUser);
+			log.info("Delete successful! Removed user by id: " + id);
+			String json = om.writeValueAsString("User ID#" + id + " has been successfully removed!");
 			pw.println(json);
 			System.out.println("JSON:\n" + json);
 			
@@ -254,7 +244,7 @@ public class RequestHelper {
 			log.info("User has successfully been edited.");
 		} else {
 			response.setContentType("application/json");
-			response.setStatus(400); // this means that the connection was successful but no user was updated!
+			response.setStatus(400); // this means that the connection was successful but no user was deleted!
 		}
 		log.info("leaving request helper now...");
 		

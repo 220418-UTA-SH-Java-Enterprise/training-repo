@@ -167,4 +167,5 @@ buildNumber.properties
 
 # Tomcat server files
 demos/4 - Java Servlets & AWS DevOps/Servers/
+demos/4 - Java Servlets & AWS DevOps/Servers2/
 # End of https://www.toptal.com/developers/gitignore/api/java,angular,visualstudiocode,maven,eclipse
