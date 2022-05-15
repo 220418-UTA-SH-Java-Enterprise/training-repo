@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User login(String username, String password) {
+	public User login(String username, String password){
 		log.info("in service layer. Logging in user with creds: " + username + ", " + password);
 		//utilize Streams API
 		Optional<User> users = udao.selectAll()
