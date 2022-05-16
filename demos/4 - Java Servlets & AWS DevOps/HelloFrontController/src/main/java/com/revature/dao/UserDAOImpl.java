@@ -29,7 +29,7 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	public int insert(User user) {
 		log.info("adding user to database. User info: " + user);
-		int isInserted = 0;
+		int isInserted = 0; //0 = no insertion, 1 = yay insertion
 		// 1. create a connection using my ConnectionUtil class - try-with-resources
 		try (Connection conn = JdbcUtil.getConnection()) {
 			// 2. prepare my SQL statement using JDBC's PreparedStatement

@@ -89,4 +89,16 @@ public class UserServiceTests extends TestCase {
 	
 	
 	//TODO: Will be doing more test cases during lecture on Monday!
+	//register unit tests
+	@Test
+	public void testRegister_returnsUser() {
+		//arrange step
+		User u3 = new User(3, "test", "test", "Tester", "Test");
+		
+		//here we will tell mockito what type of behavior to expect from calling certain methods from our dao
+		when(mockdao.insert(u3)).thenReturn(1);
+		
+		//act + assert step
+		assertEquals(1, userv.register(u3));
+	}
 }
