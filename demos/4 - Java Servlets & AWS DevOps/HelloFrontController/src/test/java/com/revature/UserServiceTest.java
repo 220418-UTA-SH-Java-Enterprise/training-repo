@@ -1,5 +1,6 @@
 package com.revature;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -13,9 +14,7 @@ import com.revature.dao.UserDAOImpl;
 import com.revature.models.User;
 import com.revature.services.UserServiceImpl;
 
-import junit.framework.TestCase;
-
-public class UserServiceTests extends TestCase {
+public class UserServiceTest {
 
 	private UserDAOImpl mockdao;
 	private UserServiceImpl userv;
@@ -101,4 +100,17 @@ public class UserServiceTests extends TestCase {
 		//act + assert step
 		assertEquals(1, userv.register(u3));
 	}
+	
+	@Test
+	public void testRegisterNullUser_returnsNullUser() {
+		//arrange step
+		User u3 = new User(3, "", "", "", "");
+		
+		//here we will tell mockito what type of behavior to expect from calling certain methods from our dao
+		when(mockdao.insert(u3)).thenReturn(1);
+		
+		//act + assert step
+		assertEquals(1, userv.register(u3));
+	}
+
 }

@@ -138,14 +138,7 @@ public class UserDAOImpl implements UserDAO{
 				userList.add(u);
 			}
 			
-			int size = 0;
-			if (rs != null) 
-			{
-			  rs.last();    // moves cursor to the last row
-			  size = rs.getRow(); // get row id 
-			}
-			
-			log.info("List has been successfully retrieved from DB. Number of users: " + size);
+			log.info("List has been successfully retrieved from DB. Number of users: " + userList.size());
 			//4. close the resultSet
 			rs.close();
 			
