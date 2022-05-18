@@ -1,4 +1,4 @@
-package com.revature.dao;
+package com.revature.daos;
 
 import java.util.ArrayList;
 import java.util.List;
