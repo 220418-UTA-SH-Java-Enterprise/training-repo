@@ -6,14 +6,25 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- Spring utilizes this idea of an IOC container
+	    <!-- Spring utilizes this idea of an IOC container
 		- this is how and what is a spring bean depends on based on configurations in this file -->
 		
 		<bean name="pokemonDao" class="com.revature.dao.PokemonDaoImpl"></bean>
 		
-		<!-- setter injection bean example -->
+		<!-- this is where we are manually defining our constructor injection via IOC container -->
 		<bean name="pokemonService" class="com.revature.service.PokemonServiceImpl">
-			<!-- name = name of the variable given by us that points to our other configured beans -->
-			<property name="pokeDao" ref="pokemonDao"></property>
+			<!-- index = position in the arguments of that constructor -->
+			<!-- ref = what dependent bean is being injected into this constructor -->
+			<constructor-arg index="0" ref="pokemonDao"></constructor-arg>
 		</bean>
+		
+		<!-- setter injection bean example -->
+		<!-- <bean name="pokemonService" class="com.revature.service.PokemonServiceImpl">
+			name = name of the variable given by us that points to our other configured beans
+			<property name="pokeDao" ref="pokemonDao"></property>
+		</bean>-->
+		
+		<!-- autowire this bean by using the autowire attribute -->
+		<!-- three ways to do autowiring: byName (setter), byType (setter), and constructor(constructor) -->
+		<!-- <bean name="pokemonService" class="com.revature.service.PokemonServiceImpl" autowire="byType"></bean> -->
 </beans>

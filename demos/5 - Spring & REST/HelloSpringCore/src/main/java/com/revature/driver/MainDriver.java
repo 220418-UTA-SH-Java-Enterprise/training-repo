@@ -31,6 +31,8 @@ import com.revature.service.PokemonServiceImpl;
  * 	1) BeanFactory (the old way <- it doesn't allow annotation configuration of spring beans)
  * 	2) ApplicationContext (newer way <- more framework-oriented way to configure beans through annotations)
  * 
+ * - In-class exercise:
+ * - change my beans.xml to use Autowiring (using @Autowired annotation)
  */
 public class MainDriver {
 
