@@ -8,12 +8,8 @@
 
 	<!-- annotation-based bean configuration = here we tell spring what packages 
 		to scan for beans -->
-
-
 	<context:annotation-config />
-
 	<context:component-scan base-package="com.revature.services" />
-
 	<context:component-scan base-package="com.revature.daos" />
 
 </beans>
