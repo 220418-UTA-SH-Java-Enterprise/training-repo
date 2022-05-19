@@ -6,7 +6,7 @@ import com.revature.model.ClientMessage;
 import com.revature.model.Hero;
 
 
-public interface HelloController {
+public interface HeroController {
 
 	List<Hero> findAllHeroes();
 	
