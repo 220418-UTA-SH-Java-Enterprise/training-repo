@@ -20,7 +20,7 @@ public class Candy {
 	@Column(name="c_price", nullable=false)
 	private double price;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "c_shop", referencedColumnName = "s_id")
 	private Shop shop;
 	
