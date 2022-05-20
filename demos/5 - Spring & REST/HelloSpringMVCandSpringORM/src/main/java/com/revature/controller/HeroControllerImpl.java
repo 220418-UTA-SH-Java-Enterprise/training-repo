@@ -2,6 +2,8 @@ package com.revature.controller;
 
 import static com.revature.util.ClientMessageUtil.REGISTATION_SUCCESSFUL;
 import static com.revature.util.ClientMessageUtil.SOMETHING_IS_WRONG;
+
+import org.springframework.http.MediaType;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +46,7 @@ public class HeroControllerImpl implements HeroController{
 	}
 
 	@Override
-	@PostMapping("/register") //automatically allows us to create new resources through our controller
+	@PostMapping(path="/register", consumes= {MediaType.APPLICATION_JSON_VALUE}) //automatically allows us to create new resources through our controller
 	//@RequestBody specifies the type of information the method is taking in -> Unmarshalling (taking in JSON object and turning into Java objects)
 	public @ResponseBody ClientMessage registerHero(@RequestBody Hero hero) {
 		/*

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.revature.model.Hero;
 import com.revature.repository.HeroRepository;
 
-@Service
+@Service("heroServiceImpl")
 public class HeroServiceImpl implements HeroService {
 	
 	//since this service layer relies on the repository
@@ -17,7 +17,7 @@ public class HeroServiceImpl implements HeroService {
 
 	@Override
 	public boolean registerHero(Hero hero) {
-		int pk = heroRepository.save(hero).getId();
+		int pk = heroRepository.insert(hero);
 		return (pk > 0) ? true : false;
 	}
 
