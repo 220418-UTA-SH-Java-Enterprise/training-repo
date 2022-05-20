@@ -19,6 +19,8 @@ import com.revature.models.ClientMessage;
 import static com.revature.util.ClientMessageUtil.*;
 import com.revature.services.CandyService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/api")
 public class CandyController {
@@ -26,6 +28,7 @@ public class CandyController {
 	@Autowired
 	private CandyService cserv;
 
+	@ApiOperation(value="Find candy by id number", notes="Provide an id to lookup a specific candy from the API", response = Candy.class)
 	@GetMapping(path = "/candy/{id}", consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public @ResponseBody Candy getById(@PathVariable int id) {
 		return cserv.getCandyById(id);
