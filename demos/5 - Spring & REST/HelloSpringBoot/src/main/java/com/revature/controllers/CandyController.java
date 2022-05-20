@@ -36,17 +36,17 @@ public class CandyController {
 		return cserv.getAllCandies();
 	}
 	
-	@PostMapping("/")
+	@PostMapping("/candy")
 	public @ResponseBody ClientMessage createCandy(@RequestBody Candy candy) {
 		return cserv.createCandy(candy) ? CREATION_SUCCESSFUL : CREATION_FAILED;
 	}
 	
-	@PutMapping("/")
+	@PutMapping("/candy")
 	public @ResponseBody ClientMessage updateCandy(@RequestBody Candy candy) {
 		return cserv.updateCandy(candy) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
 	}
 	
-	@DeleteMapping("/")
+	@DeleteMapping("/candy")
 	public @ResponseBody ClientMessage deleteCandy(@RequestBody Candy candy) {
 		return cserv.deleteCandy(candy) ? DELETION_SUCCESSFUL : DELETION_FAILED;
 	}
