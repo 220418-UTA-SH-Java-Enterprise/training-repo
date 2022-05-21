@@ -26,7 +26,9 @@ public class CandyServiceImpl implements CandyService{
 	@Override
 	public Candy getCandyById(int id) {
 		//return crepo.getById(id);
-		return crepo.findById(id).stream().findFirst().get();
+		System.out.println("ID: " + id);
+		//return crepo.findById(id).stream().findFirst().get();
+		return crepo.findById(id);
 	}
 
 	@Override
@@ -37,7 +39,7 @@ public class CandyServiceImpl implements CandyService{
 	@Override
 	public boolean updateCandy(Candy candy) {
 		//return crepo.update(candy.getName(), candy.getPrice(), candy.getId());
-		Candy target = crepo.findById(candy.getId()).stream().findFirst().get();
+		Candy target = crepo.findById(candy.getId());
 		target.setName(candy.getName());
 		target.setPrice(candy.getPrice());
 		return (crepo.save(target) != null) ? true : false;

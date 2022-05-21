@@ -37,8 +37,9 @@ public class CandyController {
 	private CandyService cserv;
 
 	 @ApiOperation(value="Find candy by id number", notes="Provide an id to lookup a specific candy from the API", response = Candy.class)
-	 @GetMapping(path = "/candy", consumes = {MediaType.APPLICATION_JSON_VALUE}) 
+	 @GetMapping(path = "/candy") 
 	 public @ResponseBody Candy getById(@RequestParam(value = "id", name = "id") int id) { 
+		 System.out.println("TEST: " + cserv.getCandyById(id));
 		 return cserv.getCandyById(id); 
 	 }
 	
@@ -49,17 +50,19 @@ public class CandyController {
 	}
 	
 	@PostMapping("/candy")
-	@ApiOperation(value="Update candy info")
+	@ApiOperation(value="Create new candy entity")
 	public @ResponseBody ClientMessage createCandy(@RequestBody Candy candy) {
 		return cserv.createCandy(candy) ? CREATION_SUCCESSFUL : CREATION_FAILED;
 	}
 	
 	@PutMapping("/candy")
+	@ApiOperation(value="Update candy entity")
 	public @ResponseBody ClientMessage updateCandy(@RequestBody Candy candy) {
 		return cserv.updateCandy(candy) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
 	}
 	
 	@DeleteMapping("/candy")
+	@ApiOperation(value="Remove candy entity")
 	public @ResponseBody ClientMessage deleteCandy(@RequestBody Candy candy) {
 		return cserv.deleteCandy(candy) ? DELETION_SUCCESSFUL : DELETION_FAILED;
 	}
