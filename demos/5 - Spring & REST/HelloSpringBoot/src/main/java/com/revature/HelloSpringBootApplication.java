@@ -32,6 +32,7 @@ public class HelloSpringBootApplication {
 				.paths(PathSelectors.ant("/api/*"))
 				.apis(RequestHandlerSelectors.basePackage("com.revature"))
 				.build()
+				.enableUrlTemplating(true)
 				.apiInfo(apiDetails());
 	}
 	
@@ -46,6 +47,6 @@ public class HelloSpringBootApplication {
 			"http://azhya.com",
 			Collections.emptyList()
 		);
-	}
+	} 
 
 }
