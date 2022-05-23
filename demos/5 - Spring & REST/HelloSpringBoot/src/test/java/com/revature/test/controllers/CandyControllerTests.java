@@ -137,12 +137,16 @@ public class CandyControllerTests {
 	public void testCreateCandy() throws Exception {
 		// id number of this creation should be 3
 		mockCandyCreation.setId(3);
+		//tell Mockito the behavior that I want this method to act like in the mock environment
 		when(service.createCandy(mockCandyCreation)).thenReturn(true);
+		
+		//act
 		RequestBuilder request = MockMvcRequestBuilders.post("/api/candy")
 				.accept(MediaType.APPLICATION_JSON_VALUE)
 				.content(om.writeValueAsString(mockCandyCreation))
 				.contentType(MediaType.APPLICATION_JSON);
 		MvcResult result = mockmvc.perform(request).andReturn();
+		//assert
 		assertEquals(om.writeValueAsString(ClientMessageUtil.CREATION_SUCCESSFUL),
 				result.getResponse().getContentAsString());
 	}
