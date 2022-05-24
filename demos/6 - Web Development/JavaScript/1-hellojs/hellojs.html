@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro to JavaScript</title>
+</head>
+<body>
+    <h1 class="my-title">Welcome User</h1>
+    <h2 id="test">Test Text Here</h2>
+    <p class="fav">My favorite hobby is sleeping.</p>
+    <p class="not-fav">My favorite hobby is sleeping.</p>
+    <p class="fav">My favorite hobby is sleeping.</p>
+    <p class="not-fav">My favorite hobby is sleeping.</p>
+
+    <!-- How to include JS: 1) internal by <script> tag -->
+    <script>
+        var title = document.getElementsByClassName("my-title");
+        console.log(title);
+
+        //title.innerText = "Hi, I'm Bob";
+
+        //title.outerText = "Hi, I'm Bob";
+
+        title[0].innerHTML = "Hi, I'm Bob"; //this only changes the DOM info on this HTML element but not the display
+
+        //getElementBy id = only 1 HTML element
+        //getElementsByClassName = collection of elements returned
+        var target = document.getElementById("test");
+        target.innerHTML = "Hiya I'm Cowboy Bob";
+
+        var rejects = document.querySelectorAll(".not-fav");
+        for (let index = 0; index < rejects.length; index++) {
+            const element = rejects[index];
+            element.style.color = "#bb151b";
+        }
+
+    </script>
+    <!-- How to include JS: 2) external way by <script> tag & src attribute-->
+    <script src="./hello.js"></script>
+</body>
+</html>
