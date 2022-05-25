@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Events Example</title>
+    <style>
+        body{
+            background-color: beige;
+            font-family: sans-serif;
+        }
+
+        strong{
+            color: blue;
+        }
+
+        /*Psedoclass selectors in CSS allow us to alter the look of HTML element based on what special state that selected element is in*/
+        strong:hover{
+            color: lightgray;
+        }
+
+        .color-bluegradient, .color-greengradient{
+            border-radius: 10px;
+            color: white;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        .color-bluegradient{
+            transition: all .5s ease-in-out;
+            background: rgb(2, 0, 36);
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+        }
+
+        .color-greengradient{
+            transition: all .5s ease-in-out;
+            background: rgb(2, 0, 36);
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 121, 25, 1) 35%, rgba(0, 255, 24, 1) 100%);
+        }
+    </style>
+</head>
+<body>
+    <div id="example">
+        <h1>Bubbling = from child to parent element</h1>
+        <p id="parent-1">
+            Lorem <strong id="child-1">ipsum</strong> dolor sit amet consectetur adipisicing elit. Voluptatum provident enim sit nemo culpa fugit officiis minus eligendi perferendis rerum quaerat sed expedita accusamus, eius tempore quidem ipsam ipsum aperiam.
+        </p>
+        <button onclick="changeBlue();">Change My Look!</button>
+        <hr>
+        <h1>Capturing = from parent to child element</h1>
+        <p id="parent-2">
+            Lorem <strong id="child-2">ipsum</strong> dolor sit amet consectetur adipisicing elit. Voluptatum provident enim sit nemo culpa fugit officiis minus eligendi perferendis rerum quaerat sed expedita accusamus, eius tempore quidem ipsam ipsum aperiam.
+        </p>
+        <button onclick="changeGreen();">Change My Look!</button>
+        <hr>
+        Click on the 'ipsum' text to see the example from the console. Click 'Reset' to clear the console.<br><br>
+        <button onclick="console.clear();">Reset</button>
+    </div>
+    <script src="bubble-capture.js"></script>
+    <script src="timed-color-changer.js"></script>
+</body>
+</html>
