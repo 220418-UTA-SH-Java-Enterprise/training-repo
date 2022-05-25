@@ -1,0 +1,39 @@
+*{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+html, body{
+    overflow: hidden;
+    height: 100vh;
+    background-color: #e8edef !important;
+    background-image: url("../imgs/poke-logo-transparent.png") !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 200px;
+}
+
+.title-bar{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+footer h6{
+    font-weight: 200 !important;
+}
+
+.pokecard-container{
+    width: 72%;
+    height: 90vh;
+    border: 5px solid black !important;
+    background-color: white;
+}
+
+.menu-options{
+    width: 25%;
+}

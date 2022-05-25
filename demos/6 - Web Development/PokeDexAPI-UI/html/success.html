@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReimburseMe! || Success</title>
+<script src="https://kit.fontawesome.com/b825c1b0e8.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+	rel="stylesheet">
+<style>
+* {
+	font-family: "Roboto", sans-serif;
+}
+
+button:focus {
+	outline: none !important;
+}
+
+ul {
+	list-style-type: none;
+	line-height: 1.5;
+	padding: 0;
+	margin: 10px 0 0 0;
+}
+
+ul li {
+	margin: 5px auto;
+}
+
+body {
+	background-color: rgba(16, 176, 39, 0.4);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+#container {
+	background: rgb(215, 242, 216); /* Old browsers */ background :
+	-moz-linear-gradient( -45deg, rgba( 215, 242, 216, 1) 0%, rgba( 180,
+	221, 180, 1) 75%, rgba( 180, 221, 180, 1) 75%, rgba( 16, 176, 39, 1)
+	100%); /* FF3.6-15 */ background : -webkit-linear-gradient( -45deg,
+	rgba( 215, 242, 216, 1) 0%, rgba( 180, 221, 180, 1) 75%, rgba( 180, 221
+	, 180, 1) 75%, rgba( 16, 176, 39, 1) 100%);
+	/* Chrome10-25,Safari5.1-6 */ background : linear-gradient( 135deg,
+	rgba( 215, 242, 216, 1) 0%, rgba( 180, 221, 180, 1) 75%, rgba( 180, 221
+	, 180, 1) 75%, rgba( 16, 176, 39, 1) 100%);
+	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	padding: 20px;
+	margin: 50px 20px;
+	border-radius: 20px;
+	box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+	overflow: hidden;
+	background: -moz-linear-gradient(-45deg, rgba(215, 242, 216, 1) 0%,
+		rgba(180, 221, 180, 1) 75%, rgba(180, 221, 180, 1) 75%,
+		rgba(16, 176, 39, 1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg, rgba(215, 242, 216, 1) 0%,
+		rgba(180, 221, 180, 1) 75%, rgba(180, 221, 180, 1) 75%,
+		rgba(16, 176, 39, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(135deg, rgba(215, 242, 216, 1) 0%,
+		rgba(180, 221, 180, 1) 75%, rgba(180, 221, 180, 1) 75%,
+		rgba(16, 176, 39, 1) 100%);
+}
+
+.fas {
+	display: block;
+	color: #10b027;
+	font-size: 200px;
+	width: 30%;
+	float: left;
+	-webkit-text-stroke: thin black;
+}
+
+.fas::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+p, h1 {
+	width: 70%;
+	float: right;
+}
+
+#go-back-btn {
+	margin: 0 20px;
+	padding: 10px 30px;
+	border: none;
+	font-weight: 600;
+	border-radius: 20px;
+	transition: 0.4s ease-in-out;
+}
+
+#go-back-btn:hover {
+	background-color: #d82111;
+	color: white;
+	text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+</body>
+<div id="container">
+	<i class="fas fa-clipboard-check"></i>
+	<h1 id="status-code">SUCCESS</h1>
+	<p id="message">text</p>
+	<p id="reason">more text</p>
+</div>
+<br>
+<button id="go-back-btn" onclick="goBack()">RETURN HOME</button>
+<script>
+    
+    var info = JSON.parse(sessionStorage.getItem('message'));
+
+    document.getElementById("message").innerHTML = info.message;
+    document.getElementById("reason").innerHTML = "You have successfully registered to the API";
+
+    function goBack(){
+        window.location = "http://127.0.0.1:5500/index.html";
+    }
+</script>
+</html>
