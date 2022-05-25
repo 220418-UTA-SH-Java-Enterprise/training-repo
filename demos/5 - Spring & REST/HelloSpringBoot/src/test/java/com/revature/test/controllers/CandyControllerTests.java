@@ -105,7 +105,7 @@ public class CandyControllerTests {
 	static void setUpBeforeClass() throws Exception {
 		System.out.println("setUpBeforeClass() :: building test objects...");
 		mockCandy1 = new Candy(1, "Starbursts", 1.99, new Shop(1, "Willy Wonka's Factory", 100));
-		mockCandy2 = new Candy(2, "M&Ms", 1.78, new Shop(2, "", 100));
+		mockCandy2 = new Candy(2, "M&Ms", 1.78, new Shop(2, "Some store", 100));
 		
 		mockCandyCreation = new Candy("Jolly Ranchers", 1.50, new Shop(3, "Jolly Ranch Enterprise", 200));
 		

@@ -16,6 +16,11 @@ public class CandyServiceImpl implements CandyService{
 	@Autowired
 	private CandyRepository crepo;
 
+	@Autowired
+	public CandyServiceImpl(CandyRepository dao) {
+		this.crepo = dao;
+	}
+
 	@Override
 	public boolean createCandy(Candy candy) {
 		int pk = crepo.save(candy).getId();
@@ -26,7 +31,7 @@ public class CandyServiceImpl implements CandyService{
 	@Override
 	public Candy getCandyById(int id) {
 		//return crepo.getById(id);
-		System.out.println("ID: " + id);
+		//System.out.println("ID: " + id);
 		//return crepo.findById(id).stream().findFirst().get();
 		return crepo.findById(id);
 	}
