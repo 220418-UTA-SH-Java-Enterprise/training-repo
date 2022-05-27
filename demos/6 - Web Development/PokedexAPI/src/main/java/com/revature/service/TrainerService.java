@@ -12,6 +12,8 @@ public interface TrainerService {
 	//get trainer by id
 	Trainer getTrainerById(int id);
 	
+	Trainer getTrainerByUsername(String username);
+	
 	//get all candies
 	List<Trainer> getAllTrainers();
 	
@@ -20,4 +22,5 @@ public interface TrainerService {
 	
 	//delete a trainer
 	boolean deleteTrainer(Trainer trainer);
+
 }

@@ -15,7 +15,7 @@
 <body>
     <div>
         <div class="title-bar container-fluid text-white text-center bg-dark">
-            <h1 class="title">Welcome to the PokeDex API <h3 class="user-tag">Trainer: user</h3></h1>
+            <h1 class="title">Welcome to the PokeDex API <h3 class="user-tag" id="user-tag">Trainer: user</h3></h1>
         </div>
 
         <section class="main-content fixed-left">
@@ -23,18 +23,18 @@
                 <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
                     Main Menu
                 </a>
-                <a href="#" class="list-group-item list-group-item-action">Manage Profile</a>
-                <a href="#" class="list-group-item list-group-item-action">Get all of Your Pokemon</a>
-                <a href="#" class="list-group-item list-group-item-action">Catch a new Pokemon</a>
-                <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Release Pokemon to the Wild</a>
-                <a href="#" class="list-group-item list-group-item-action">Log out</a>
+                <a href="#" class="list-group-item list-group-item-action" id="edit-profile">Manage Profile</a>
+                <a href="#"class="list-group-item list-group-item-action" id="get-all">Get all of Your Pokemon</a>
+                <a onclick="getRandomPokemon(event);" class="list-group-item list-group-item-action" id="get-one">Catch a new Pokemon</a>
+                <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true" id="delete-pokemon">Release Pokemon to the Wild</a>
+                <a href="#" class="list-group-item list-group-item-action" id="logout">Log out</a>
             </div>
             <div class="w-70 pokecard-container float-start p-3 text-left ms-3">
-                <h3 class="title">
-                    View all Available Pokemon
-                </h3>
+                <h3 class="title text-center" id="api-action-title"></h3>
+                <div id="data" class="container text-center"></div>
             </div>
         </section>
     </div>
+    <script src="../js/home.js"></script>
 </body>
 </html>

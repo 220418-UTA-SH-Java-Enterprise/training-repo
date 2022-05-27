@@ -13,8 +13,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,8 +36,6 @@ import com.revature.security.JwtTokenUtil;
 import com.revature.security.JwtUserDetailsService;
 import com.revature.service.TrainerService;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwt;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -71,7 +67,7 @@ public class TrainerController {
 		}
 	}
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "unchecked" })
 	public String getClaimsValueFromToken(String token) throws Exception {
 		System.out.println(token);
 		Map<String,String> result =
@@ -98,7 +94,7 @@ public class TrainerController {
 		return ResponseEntity.ok(new JwtResponse(token));
 	}
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	
 	@RequestMapping(value = "/verify", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<?> verifyToken(@RequestBody String jwtString) throws Exception {
 		ObjectMapper om = new ObjectMapper();
@@ -110,6 +106,12 @@ public class TrainerController {
 	@GetMapping(path = "/id-lookup")
 	public @ResponseBody Trainer getById(@RequestParam int id) {
 		return trainerService.getTrainerById(id);
+	}
+	
+	@ApiOperation(value="Find trainer by username", notes="Provide an username to lookup a specific trainer from the API", response = Trainer.class)
+	@GetMapping(path = "/username-lookup")
+	public @ResponseBody Trainer getByUsername(@RequestParam String username) {
+		return trainerService.getTrainerByUsername(username);
 	}
 	
 	@ApiOperation(value="Get a list of all trainers")

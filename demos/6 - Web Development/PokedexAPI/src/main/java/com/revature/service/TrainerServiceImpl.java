@@ -48,4 +48,9 @@ public class TrainerServiceImpl implements TrainerService{
 		}
 	}
 
+	@Override
+	public Trainer getTrainerByUsername(String username) {
+		return trainerRepo.findByUsername(username);
+	}
+
 }

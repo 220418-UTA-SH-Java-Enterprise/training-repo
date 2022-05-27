@@ -1,6 +1,6 @@
 const form = document.getElementById("login-form");
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   // stop form submission
   event.preventDefault();
 
@@ -8,47 +8,55 @@ form.addEventListener("submit", (event) => {
   let uname = form.elements[0].value;
   let pw = form.elements[1].value;
 
-  //start HTTPRequest with AJAX
-  let xhr = new XMLHttpRequest();
-
   let loginTemplate = {
     username: uname,
     password: pw,
   };
-  console.log(`HttpRequest body: ` + loginTemplate);
+  console.log(`HttpRequest body: ` + JSON.stringify(loginTemplate));
 
-  xhr.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      let data = JSON.parse(xhr.responseText);
-      console.log(data); // do this just to check what we've parsed
-      sessionStorage.setItem("currentUser", data);
-      //redirect user to the success page
-      window.location.replace("home.html");
-    }else{
-        console.log("Failed. Status Code: " + xhr.status)
-        var reason = {
-            code : xhr.status,
-            issue : 'Failed to log in.',
-            trace: xhr.responseText
-        };
-        console.log(reason);
-        sessionStorage.setItem('failMessage', JSON.stringify(reason));
-        console.log(sessionStorage.getItem('failMessage'));
+  //do http request and send to server
+  try {
+    const raw_response = await fetch(
+      `http://localhost:9001/api/trainer/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(loginTemplate),
+      }
+    );
 
-        //redirect user to the error page
-      window.location.replace("error.html");
+    //check for a successful response
+    if (!raw_response.ok) {
+      throw new Error(raw_response.status);
     }
-    console.log("Processing request...")
-  };
 
-  xhr.open("POST", 'http://localhost:9001/api/trainer/login', true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+    const json_data = await raw_response.json();
 
-  xhr.send(JSON.stringify(tempTrainer));
+    console.log(json_data);
+
+    //save token into a sessionStorage variable
+    sessionStorage.setItem("user-auth-token", JSON.stringify(json_data));
+
+    //set timeout to transition to the home page if user token is not null
+    console.log("Success! Redirecting user to home page...");
+    if (json_data !== null) {
+      setTimeout(() => {
+        console.log("redirect starting...");
+        window.location.href = "../html/home.html";
+      }, 1000);
+    }
+  } catch (error) {
+    //this catch block is for network errors
+    console.log(error);
+  }
 });
+
+
 /******************************/
-function togglePasswordView(){
+function togglePasswordView() {
   var x = document.getElementById("password");
   if (x.type === "password") {
     x.type = "text";

@@ -18,4 +18,7 @@ public interface TrainerRepository extends JpaRepository<Trainer, Integer>{
 	
 	@Query(value="SELECT * FROM trainers where trainer_id=?1", nativeQuery = true)
 	public Trainer findById(int id);
+
+	@Query(value="SELECT * FROM trainers where trainer_username=?1", nativeQuery = true)
+	public Trainer findByUsername(String username);
 }
