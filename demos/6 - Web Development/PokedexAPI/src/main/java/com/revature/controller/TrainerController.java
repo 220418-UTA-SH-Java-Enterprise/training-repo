@@ -2,7 +2,9 @@ package com.revature.controller;
 
 import static com.revature.util.ClientMessageUtil.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -11,6 +13,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,14 +28,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.model.ClientMessage;
 import com.revature.model.JwtRequest;
 import com.revature.model.JwtResponse;
 import com.revature.model.Trainer;
+import com.revature.model.UserValidation;
 import com.revature.security.JwtTokenUtil;
 import com.revature.security.JwtUserDetailsService;
 import com.revature.service.TrainerService;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwt;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -63,6 +71,21 @@ public class TrainerController {
 		}
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public String getClaimsValueFromToken(String token) throws Exception {
+		System.out.println(token);
+		Map<String,String> result =
+		        new ObjectMapper().readValue(token, HashMap.class);
+		String rawToken = "";
+		for (String value : result.values()) {
+		    System.out.println("Value = " + value);
+		    rawToken = value;
+		}
+        String username = jwtTokenUtil.getUsernameFromToken(rawToken);
+        System.out.println(username);
+        return username;
+    }
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
@@ -73,6 +96,14 @@ public class TrainerController {
 		final String token = jwtTokenUtil.generateToken(userDetails);
 
 		return ResponseEntity.ok(new JwtResponse(token));
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@RequestMapping(value = "/verify", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<?> verifyToken(@RequestBody String jwtString) throws Exception {
+		ObjectMapper om = new ObjectMapper();
+		String username = getClaimsValueFromToken(om.convertValue(jwtString, String.class));
+		return ResponseEntity.ok(new UserValidation(username));
 	}
 	
 	@ApiOperation(value="Find trainer by id number", notes="Provide an id to lookup a specific trainer from the API", response = Trainer.class)
