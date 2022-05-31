@@ -41,7 +41,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/trainer")
-@CrossOrigin(origins = {"http://localhost:5500", "http://127.0.0.1:5500"})
+@CrossOrigin(origins = {"http://localhost:5500", "http://127.0.0.1:5500", "http://localhost:4200"})
 @Api(value = "TrainerRestController", description = "REST controller related to Trainer Entities")
 public class TrainerController {
 	
