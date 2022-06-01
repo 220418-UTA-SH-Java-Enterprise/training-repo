@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessagesService } from 'src/app/service/messages.service';
 
 @Component({
   selector: 'app-messages',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor() { }
+  //injection of service into our component
+  constructor(public messageService: MessagesService) { }
 
   ngOnInit(): void {
   }

@@ -1,1 +1,8 @@
-<p>messages works!</p>
+<div *ngIf="messageService.messages.length">
+    <h2>Messages</h2>
+    <!-- (click) is an example of event binding => allows our components to listen for events during runtime -->
+    <button type="button" class="clear" (click)="messageService.clear()">Clear messages</button>
+    <div *ngFor="let message of messageService.messages">
+        {{message}}
+    </div>
+</div>
