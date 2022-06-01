@@ -172,3 +172,4 @@ demos/5 - Spring & REST/Servers/
 demos/5 - Spring & REST/Servers2/
 # End of https://www.toptal.com/developers/gitignore/api/java,angular,visualstudiocode,maven,eclipse
 demos/6 - Web Development/Intro to HTML & CSS/.vscode/settings.json
+.DS_Store
