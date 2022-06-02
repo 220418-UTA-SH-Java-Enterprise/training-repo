@@ -1,6 +1,11 @@
-<!-- <h1>Welcome to your first angular app</h1>
-<h2> {{title}} </h2> -->
-
-<app-heroes></app-heroes>
+<!-- <h1>Welcome to your first angular app</h1> -->
+<h2> {{title}} </h2>
+<nav>
+    <!-- routerLink attribute will set this anchor to navigate users to our desired endpoint -->
+    <a routerLink="/dashboard">Dashboard</a><br>
+    <a routerLink="/heroes">Heroes</a>
+</nav>
+<router-outlet></router-outlet> 
+<!-- enables routing throughout our SPA  -->
 <app-messages></app-messages>
 
