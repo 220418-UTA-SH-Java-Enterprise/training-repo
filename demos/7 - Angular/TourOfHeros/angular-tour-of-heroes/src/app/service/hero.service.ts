@@ -11,12 +11,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class HeroService {
   //two ways to set our HTTP headers
   //1) set a class field called httpOptions that will hold our header values in it
+  // httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type': 'application/json'
+  //   })
+  // };
+  //OR,
   //2) create an CORS Interceptor and add it as a provider to our entire app
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  };
 
   //define our server URL string
   private serverURL = 'api/heroes';
@@ -62,7 +63,7 @@ export class HeroService {
 
   //update hero
   updateHero(hero: Hero): Observable<any>{
-    return this.http.put(this.serverURL, hero, this.httpOptions).pipe(
+    return this.http.put(this.serverURL, hero).pipe(
       tap(_ => this.log(`updated hero id=${hero.id}`)),
       catchError(this.handleError<any>('updateHero'))
     );
@@ -72,16 +73,32 @@ export class HeroService {
   deleteHero(id: number): Observable<Hero>{
     const url = `${this.serverURL}/${id}`;
 
-    return this.http.delete<Hero>(url, this.httpOptions).pipe(
+    return this.http.delete<Hero>(url).pipe(
       tap(_ => this.log(`deleted hero id=${id}`)),
       catchError(this.handleError<any>('deleteHero'))
     );
   }
   //add hero
   addHero(hero: Hero): Observable<Hero>{
-    return this.http.post<Hero>(this.serverURL, hero, this.httpOptions).pipe(
+    return this.http.post<Hero>(this.serverURL, hero).pipe(
       tap((newHero: Hero) => this.log(`added hero with id=${newHero.id}`)),
       catchError(this.handleError<any>('addHero'))
+    );
+  }
+
+  //search hero by name
+  //get method HTTP call
+  searchHeroes(term: string): Observable<Hero[]>{
+    //if term is empty, then i should return an empty observable array
+    if(!term.trim()){
+      return of([]);
+    }
+    //if there is a term there, then I want to return the heroes that match that string pattern by name
+    return this.http.get<Hero[]>(`${this.serverURL}/?name=${term}`).pipe(
+      tap(x => x.length ?
+         this.log(`found heroes matching "${term}"`) :
+         this.log(`no heroes matching "${term}"`)),
+      catchError(this.handleError<Hero[]>('searchHeroes', []))
     );
   }
 
