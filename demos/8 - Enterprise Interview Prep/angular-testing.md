@@ -8,3 +8,6 @@
         - Karma is a task runner
         - is the mechanism that runs our test and prints the results to the command line
         - it also runs our tests in the browser of our choice
+- So how do I get started making unit tests in Angular?
+    - We will need to modify our .spec files to our components and services to properly analyze what behavior we want for our app
+    - If you are unfamilar with Jasmine syntax, visit these resources (here)[https://devhints.io/jasmine] and (here)[https://jasmine.github.io].
