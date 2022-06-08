@@ -14,7 +14,9 @@
 - CI/CD questions:
     - What is Agile? What is the difference between Waterfall and Agile?
     - What is waterfall software lifecycle development? When is each method of software development lifecycle apply?
-- Simple Coding question: SQL (How to fetch top 10 salaried employees)
+- Simple Coding questions: 
+    - SQL (How to fetch top 10 salaried employees)
+    - Java (how to reverse a string, how to sort an array, etc.)
 - Spring Boot Questions: 
     - Describe the spring application workflow
     - Explain how you would create a backend that would fetch 100 records
